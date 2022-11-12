@@ -7,5 +7,5 @@ const PORT = 3000;
 app.use(router);
 
 app.listen(PORT, () => {
-    console.log('Successfully');
+    console.log('Server running on port 3000!!!');
 })

@@ -1,19 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const {
-    getAllTodo,
-    getIdTodo,
-    postTodo,
-    updateTodo,
-    deleteTodo} = require ('../controllers/todo.controller');
+const {getAllTodo, getIdTodo, postTodo, updateTodo, deleteIdTodo, deleteTodo} = require ('../controllers/todo.controller');
 
-// get request untuk semua daftar tugas
+//fungsi route 
 router.get('/', getAllTodo);
-
-//get request for one todolist
 router.get('/:id', getIdTodo);
-router.get('/', getAllTodo);
-
-
-    
+router.post('/', postTodo);
+router.put('/:id', updateTodo);
+router.delete('/:id', deleteIdTodo);
+router.delete('/', deleteTodo);
