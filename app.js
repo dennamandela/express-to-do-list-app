@@ -6,9 +6,6 @@ const dotenv = require('dotenv');
 // get config vars
 dotenv.config();
 
-// access config var
-process.env.TOKEN_SECRET;
-
 const PORT = 3500;
 
 app.use(express.json())
