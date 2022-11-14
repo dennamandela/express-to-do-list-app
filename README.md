@@ -19,7 +19,7 @@ For running this project please install nodejs and mysql.
 ## Getting Started to the development
 - Clone the repository:
 ```
-git clone https://github.com/dennamandela express-to-do-list-app.git
+git clone https://github.com/dennamandela/express-to-do-list-app.git
 ```
 - Switch to the repo folder:
 ```
@@ -33,7 +33,7 @@ npm install or yarn install
 ```
 "development": {
     "username": "root",
-    "password": "Burangrang08_",
+    "password": "",
     "database": "todolist",
     "host": "127.0.0.1",
     "dialect": "mysql"
