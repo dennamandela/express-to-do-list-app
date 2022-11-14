@@ -35,8 +35,8 @@ module.exports = {
             const newTodoData = {
                 title: title,
                 description: description,
-                isCompleted: isCompleted
-            };
+                isCompleted: isCompleted ? isCompleted : false
+            }
 
             const todoData = await Todo.create(newTodoData);
             console.log(todoData);

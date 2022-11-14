@@ -7,7 +7,7 @@ const {
     addTodo, 
     updateTodoByID, 
     deleteTodoByID, 
-    deleteAll,
+    deleteAllTodo,
 } = require ('../controllers/todo.controller');
 
 //fungsi route 
@@ -16,4 +16,6 @@ router.get('/:id', getTodoByID);
 router.post('/', addTodo);
 router.put('/:id', updateTodoByID);
 router.delete('/:id', deleteTodoByID);
-router.delete('/', deleteAll);
+router.delete('/', deleteAllTodo);
+
+module.exports = router;
