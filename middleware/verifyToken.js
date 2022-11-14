@@ -5,28 +5,23 @@ const jwt = require('jsonwebtoken');
 module.exports = {
     authenticateToken: (req, res, next) => {
         const auth = req.headers.authorization;
-        const token = auth.split(' ')[1];
 
-        if (!token) {
-            return res.status(401).send({
-                message: 'Unauthorized',
-            })
-        }
+        if (auth) {
+            const token = auth.split(' ')[1];
 
-        try {
-            const verify = jwt.verify(token, process.env.TOKEN_SECRET)
-            if(!verify) {
-                return res.status(403).send({
-                    message: 'Invalid token',
-                })
-            }
+            jwt.sign(token, process.env.TOKEN_SECRET, (err, user) => {
+                if (err) {
+                    return res.status(403).send({
+                        message: 'Invalid token provided'
+                    });
+                }
 
-            req.user = verify;
-            next();
-
-        } catch (err) {
-            res.status(500).send({
-                message: err.message || 'Internal Server Error'
+                req.user = user;
+                next;
+            });
+        } else {
+            res.status(401).send({
+                message: 'Unauthorized'
             })
         }
     }
