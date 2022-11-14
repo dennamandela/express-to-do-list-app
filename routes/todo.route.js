@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const {
+    authenticateToken,
+} = require ('../middleware/verifyToken');
+
+const {
     getAllTodo, 
     getTodoByID, 
     addTodo, 
@@ -11,7 +15,7 @@ const {
 } = require ('../controllers/todo.controller');
 
 //fungsi route 
-router.get('/', getAllTodo);
+router.get('/', authenticateToken, getAllTodo);
 router.get('/:id', getTodoByID);
 router.post('/', addTodo);
 router.put('/:id', updateTodoByID);

@@ -45,3 +45,86 @@ npm run start
 ```
 
 You can now access the server at http://localhost:3500
+
+## API Documentation
+### Todo List
+#### Todos
+
+Get All todos
+
+```
+GET /todos
+```
+
+Get Single todos
+
+```
+GET /todos/{id}
+```
+
+Add a new todos
+
+```
+POST /todos
+```
+
+```
+Body: 
+{
+  "title": String, 
+  "description": String, 
+  "isCompleted": Boolean
+}
+```
+
+Update todos
+
+```
+PUT /todos/{id}
+```
+
+```
+Body: 
+{
+  "title": String, 
+  "description": String, 
+  "isCompleted": Boolean
+}
+```
+
+Delete todos
+
+```
+DELETE todos/{id}
+```
+
+#### Auth
+
+Register Login
+
+```
+POST /users/register
+```
+
+```
+Body: 
+{
+  "username": String, 
+  "phone": String, 
+  "email": String,
+  "password": String,
+}
+```
+
+User Login
+
+```
+POST /users/login
+```
+
+```
+Body:
+{
+  "email": String,
+  "password": String
+}

@@ -36,13 +36,20 @@ module.exports = {
           email: req.body.email
         }
       });
+
+      if (!users) {
+        return res.status(404).json ({
+          message: 'User not found'
+        })
+      }
+      
       // comparing password
       const hasPassword = await bcrypt.compare(req.body.password, users.password)
 
       // if to check a password
       if (!hasPassword) {
         return res.status(401).json({
-          accessToken: 'no valid',
+          accessToken: null,
           message: 'Password is incorrect',
         })
       }
@@ -51,7 +58,7 @@ module.exports = {
       const token = jwt.sign({
         id: users.id
       }, process.env.TOKEN_SECRET, {
-        expiresIn: '60s'
+        expiresIn: '1800s'
       });
       // responding to client request with user success message and access token.
       res.status(200).json({
